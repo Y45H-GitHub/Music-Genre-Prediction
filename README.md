@@ -1,6 +1,8 @@
 # 🎵 Music Genre Classification Web Application
 
 A sophisticated web application that uses machine learning to classify music genres and recommend Spotify playlists. Built with Flask, scikit-learn, and librosa for audio processing.
+![image](https://github.com/user-attachments/assets/aa498dbf-2a68-4f1e-b994-e5bfb7c3b728)
+![image](https://github.com/user-attachments/assets/1e598097-8f63-4c44-ac6d-268f9d1193fc)
 
 ## 🌟 Features
 
