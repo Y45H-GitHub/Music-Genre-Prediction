@@ -108,10 +108,6 @@ python app.py
 - Tempo
 - 20 MFCCs (mean & variance)
 
-### Model Performance
-- SVM Accuracy: [Your accuracy score]
-- KNN Accuracy: [Your accuracy score]
-- Trained on GTZAN dataset
 
 
 ## 🙏 Acknowledgments
