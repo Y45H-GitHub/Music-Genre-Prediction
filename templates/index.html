@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Genre Classifier</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      /* Additional styles for demo section */
+      .demo-section {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+      }
+      .demo-audios {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .demo-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: 6px;
+      }
+      .demo-card h3 {
+        margin-top: 0;
+        color: #4cc9f0;
+      }
+
+      .demo-button:hover {
+        background: #560bad;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎵 Music Genre Classifier</h1>
+      <p>Upload a music file to predict its genre</p>
+
+      <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".wav,.mp3" required />
+        <button type="submit">Predict Genre</button>
+      </form>
+
+      <section class="demo-section">
+        <h2>Try Demo Audios</h2>
+        <div class="demo-audios">
+          <!-- Demo 1 -->
+          <div class="demo-card">
+            <h3>Hip Hop Sample</h3>
+            <audio controls style="width: 100%">
+              <source
+                src="{{ url_for('static', filename='audio_samples/pop_test_uptown_funk.wav') }}"
+                type="audio/wav"
+              />
+            </audio>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+              <input
+                type="hidden"
+                name="sample_file"
+                value="pop_test_uptown_funk.wav"
+              />
+            </form>
+          </div>
+
+          <!-- Demo 2 -->
+          <div class="demo-card">
+            <h3>Pop Sample</h3>
+            <audio controls style="width: 100%">
+              <source
+                src="{{ url_for('static', filename='audio_samples/pop.00000.wav') }}"
+                type="audio/wav"
+              />
+            </audio>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="sample_file" value="pop.00000.wav" />
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

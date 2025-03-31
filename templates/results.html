@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Results</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      .result-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .genre-result {
+        background: linear-gradient(145deg, #f3f4f6, #ffffff);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+        width: 100%;
+      }
+
+      .genre-badge {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1db954;
+        margin: 15px 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Updated Playlist-specific styles */
+      .playlist-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 20px auto;
+      }
+
+      .playlist-suggestions {
+        background: linear-gradient(145deg, #1db954, #169c46);
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+      }
+
+      .playlist-suggestions h3 {
+        color: white;
+        margin: 0 0 15px 0;
+        font-size: 1.5em;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .playlist-link {
+        display: inline-block;
+        padding: 12px 25px;
+        background: white;
+        color: #1db954;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .playlist-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        background: #f8f8f8;
+      }
+
+      .features-list {
+        margin-top: 25px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container result-container">
+      <h1>🎶 Prediction Results</h1>
+
+      <div class="result-card">
+        <h2>{{ filename }}</h2>
+        <div class="genre-badge">{{ genre }}</div>
+
+        <audio controls>
+          <source
+            src="{{ url_for('static', filename='uploads/' + filename) }}"
+          />
+        </audio>
+
+        <!-- Playlist Section -->
+        <div class="playlist-container">
+          <div class="playlist-suggestions">
+            <h3>🎵 Recommended Playlist</h3>
+            {% if genre == 'blues' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DXd9rSDyQguNk"
+              target="_blank"
+              class="playlist-link"
+            >
+              Listen to Blues Classics
+            </a>
+            {% elif genre == 'classical' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DWWEJlAGA9gs0"
+              target="_blank"
+              class="playlist-link"
+              >Classical Essentials on Spotify</a
+            >
+            {% elif genre == 'country' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DX1lVhptIYRda"
+              target="_blank"
+              class="playlist-link"
+              >Country Hits on Spotify</a
+            >
+            {% elif genre == 'disco' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DX2GKumqRIZ7g"
+              target="_blank"
+              class="playlist-link"
+              >Disco Forever on Spotify</a
+            >
+            {% elif genre == 'hiphop' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd"
+              target="_blank"
+              class="playlist-link"
+              >Hip-Hop Favorites on Spotify</a
+            >
+            {% elif genre == 'jazz' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DXbITWG1ZJKyo"
+              target="_blank"
+              class="playlist-link"
+              >Jazz Classics on Spotify</a
+            >
+            {% elif genre == 'metal' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DWTcqUzwhNmKv"
+              target="_blank"
+              class="playlist-link"
+              >Metal Essentials on Spotify</a
+            >
+            {% elif genre == 'pop' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DWVlLVXKTOAYa"
+              target="_blank"
+              class="playlist-link"
+              >Pop Right Now !</a
+            >
+            {% elif genre == 'reggae' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DXbSbnqxMTGx9"
+              target="_blank"
+              class="playlist-link"
+              >Reggae Classics on Spotify</a
+            >
+            {% elif genre == 'rock' %}
+            <a
+              href="https://open.spotify.com/playlist/37i9dQZF1DWXRqgorJj26U"
+              target="_blank"
+              class="playlist-link"
+              >Rock Classics on Spotify</a
+            >
+            {% endif %}
+          </div>
+        </div>
+
+        <h3>Audio Features:</h3>
+        <ul class="features-list">
+          {% for key, value in features.items() %}
+          <li><strong>{{ key }}:</strong> {{ "%.4f"|format(value) }}</li>
+          {% endfor %}
+        </ul>
+
+        <a href="/" class="back-button">Try Another</a>
+      </div>
+    </div>
+  </body>
+</html>
