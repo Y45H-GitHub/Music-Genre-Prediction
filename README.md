@@ -57,7 +57,7 @@ A sophisticated web application that uses machine learning to classify music gen
 
 1. Clone the repository
 ```bash
-git clone [your-repository-url]
+git clone https://github.com/Y45H-GitHub/Music-Genre-Prediction
 cd music-genre-classifier
 ```
 
